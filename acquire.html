@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Acquire (Greed) - Retro Text Game</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="main">
+      <section class="panel">
+        <h1>Acquire (Greed)</h1>
+        <p class="subtle">Retro text interface. Type commands in the box and press Enter.</p>
+        <pre id="output" class="output"></pre>
+        <div class="input-row">
+          <input id="input" type="text" autocomplete="off" spellcheck="false" />
+          <button id="submit" type="button">Submit</button>
+        </div>
+      </section>
+      <aside class="panel help">
+        <h2>How to Play:</h2>
+        <ul>
+          <li>Acquire is played on a board of numbered tiles.  Adjacent tiles are part of the same firm.  This can be used to create firms (by playing adjacent to an unclaimed tile) and merge firms (playing next to two unclaimed firms, larger firm survives)</li>
+          <li>Chains are grouped by: (premium) Imperial & Continental, (normal) American, Festival, & Worldwide, (budget) Tower & Luxor.</li>
+		  <li>The object of the game is to make the most money by having leadership shares in chains.  Shares can be purchased up to 3 a turn.  Upon merger (or game end, for surviving firms), the first holder gets 10x the price bonus, the second holder gets 5x.  Bigger chains cost more.</li>
+          <li>Chains of 11 tiles or more are safe chains.  They may not be merged into a larger chain and will be there at the end.  Merging non-safe chains in the middle of the game is a good way to raise money (if you have top holdings) to take over other chains.</li>
+		  <li>In a merger, you can trade smaller firm stocks 2-for-1 for larger firm stocks, or sell them back to the bank, or keep them if you think the company will come back again (they carry over)></li>
+		  <li>There are only 25 stocks for sale for each firm.  Plan accordingly, as having them run out is part of the game.</li>
+		  <li>Do not look at tiles and stock counts when it is someone else's turn (secret portion goes until the player has chosen what tile to play), but what they are buying is public knowledge.  Keeping track of who has how many stocks in your head is part of the game.</li>
+		  <li>The game ends when a player accepts the end (any player) after the tile bag runs out, all the chains are safe, or one chain is over 40 tiles large.</li>
+        </ul>
+      </aside>
+    </main>
+    <script src="acquire.js"></script>
+  </body>
+</html>
