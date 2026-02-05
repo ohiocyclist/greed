@@ -11,6 +11,9 @@
       <section class="panel">
         <h1>Acquire (Greed)</h1>
         <p class="subtle">Retro text interface. Type commands in the box and press Enter.</p>
+        <div>
+		<div class="board" id="board">
+        </div>
         <pre id="output" class="output"></pre>
         <div class="input-row">
           <input id="input" type="text" autocomplete="off" spellcheck="false" />
@@ -21,7 +24,7 @@
         <h2>How to Play:</h2>
         <ul>
           <li>Acquire is played on a board of numbered tiles.  Adjacent tiles are part of the same firm.  This can be used to create firms (by playing adjacent to an unclaimed tile) and merge firms (playing next to two unclaimed firms, larger firm survives)</li>
-          <li>Chains are grouped by: (premium) Imperial & Continental, (normal) American, Festival, & Worldwide, (budget) Tower & Luxor.</li>
+          <li>Chains are grouped by: (premium) <font color="#da25c2">Imperial</font> & <font color="#25cbda">Continental</font>, (normal) <font color="#2825da">American</font>, <font color="#25da50">Festival</font>, & <font color="#da9225">Worldwide</font>, (budget) <font color="#efea2f">Tower</font> & <font color="#ef2f40">Luxor</font>.  These colors can be used to distinguish them on the board.</li>
 		  <li>The object of the game is to make the most money by having leadership shares in chains.  Shares can be purchased up to 3 a turn.  Upon merger (or game end, for surviving firms), the first holder gets 10x the price bonus, the second holder gets 5x.  Bigger chains cost more.</li>
           <li>Chains of 11 tiles or more are safe chains.  They may not be merged into a larger chain and will be there at the end.  Merging non-safe chains in the middle of the game is a good way to raise money (if you have top holdings) to take over other chains.</li>
 		  <li>In a merger, you can trade smaller firm stocks 2-for-1 for larger firm stocks, or sell them back to the bank, or keep them if you think the company will come back again (they carry over)></li>

@@ -83,3 +83,65 @@ button:hover {
   margin: 0;
   padding-left: 20px;
 }
+
+    .board {
+      display: grid;
+      grid-template-columns: repeat(12, 60px);
+      grid-template-rows: repeat(9, 60px);
+      border: 4px solid #000;
+    }
+
+    .square {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: serif;
+      font-size: 16px;
+      font-weight: bold;
+      border: 2px solid #483c2c;
+    }
+
+    .black {
+      background: #483c2c;
+      color: #bcc20b;
+    }
+
+    .white {
+      background: #bcc20b;
+      color: #483c2c;
+    }
+
+    .imperial {
+      background: #da25c2;
+      color: #bcc20b;
+    }
+
+    .continental {
+      background: #25cbda;
+      color: #bcc20b;
+    }
+
+    .american {
+      background: #2825da;
+      color: #bcc20b;
+    }
+
+    .festival {
+      background: #25da50;
+      color: #483c2c;
+    }
+
+    .worldwide {
+      background: #da9225;
+      color: #483c2c;
+    }
+
+    .luxor {
+      background: #ef2f40;
+      color: #bcc20b;
+    }
+
+    .tower {
+      background: #efea2f;
+      color: #483c2c;
+    }

@@ -153,7 +153,45 @@ class AcquireGame {
             thisboard = thisboard.concat('\n\n')
         }
 
-        return thisboard
+        //return thisboard
+      // graphic board
+      document.getElementById(`board`).innerHTML = ''
+      for (let j = 1; j <= 9; j++) {
+        for (let i = 1; i <= 12; i++) {
+            const thislet = String.fromCharCode(64 + j);
+            const target = document.getElementById(`board`)
+            const div = document.createElement("div")
+            div.className = "square white"
+            const thisTile = String.fromCharCode(i + 64).concat(String(j))
+            if (this.boardTiles.has(thisTile)) {
+	        div.className = "square black"
+            }
+            if (this.boardChains[i][j] === 'I') {
+                div.className = "square imperial"
+            }
+            if (this.boardChains[i][j] === 'C') {
+                div.className = "square continental"
+            }
+            if (this.boardChains[i][j] === 'A') {
+                div.className = "square american"
+            }
+            if (this.boardChains[i][j] === 'F') {
+                div.className = "square festival"
+            }
+            if (this.boardChains[i][j] === 'W') {
+                div.className = "square worldwide"
+            }
+            if (this.boardChains[i][j] === 'L') {
+                div.className = "square luxor"
+            }
+            if (this.boardChains[i][j] === 'T') {
+                div.className = "square tower"
+            }
+            div.innerText = thisTile.concat(this.boardChains[i][j])
+            target.appendChild(div);
+         }
+        }
+        return ''
     }
 
     adjacent(tile1, tile2) {
@@ -931,6 +969,7 @@ class AcquireGame {
         let playerHeld = Array.from(this.playerBags[this.playerTurn])
         let removedMessage = ''
         let drawnTile = ''
+		this.canEndGame = false
         for (let i = 0; i < playerHeld.length; i++) {
             if (!this.safeChainChecker(playerHeld[i])) {
                 removedMessage = removedMessage.concat('Removed tile ', playerHeld[i], ' for causing mergers between safe chains\n\n')
