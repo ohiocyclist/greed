@@ -563,6 +563,10 @@ class AcquireGame {
         if (drawnTile !== '') {
             this.playerBags[this.playerTurn].add(drawnTile)
         }
+        if (this.playerFunds[this.playerTurn] < 200) {
+            this.nextTurn()
+            return `${this.textBack}${this.board()}\n\nPlayer ${this.playerTurn} has too little money to buy stocks hit enter\n`
+        }
         // would like a nice sum function.....
         if (this.chainsOnBoard.reduce((acc, cur) => {return acc + cur}, 0) === 0) {
             this.playerPhase = this.noStockPhase
@@ -816,26 +820,25 @@ class AcquireGame {
 
 	stockRequest(inputval) {
 		// now that we have the number of stock to buy, get the firm
+		let stockprices = this.calcStocks()		
 		if (this.playerPhase !== this.noStockPhase && Number(inputval) > 0 && Number(inputval) <= this.stockLeft) {
 			this.playerPhase = this.stockBuyingPhase
 			this.stockBuy = Number(inputval)
 			this.stockLeft = this.stockLeft - this.stockBuy
-			return this.textBack.concat(this.board(), '\n\nWhich firm to purchase (first letter is ok) ?')
+			return this.textBack.concat(this.board(), `\n\nHolding Money ${this.playerFunds[this.playerTurn]}\n\n${stockprices}\n\nWhich firm to purchase (first letter is ok) ?`)
 		}
 		if (inputval === '0' || this.playerPhase === this.noStockPhase) {
 			this.nextTurn()
 			return this.textBack.concat('Player ', String(this.playerTurn), ' make sure nobody else is looking and hit enter to see your tiles')
 		}
+		stockprices = this.calcStocks()
 		// invalid request of number of stocks, repeat the question
-		const stockprices = this.calcStocks()
 		return this.textBack.concat(this.board(), '\n\n', stockprices, '\n\nHolding Money $', String(this.playerFunds[this.playerTurn]),
 			'\n\n', this.playerStockHoldings(true), '\n\nBuy how many shares of a single stock type? (0-', String(this.stockLeft), ')\n\n')
 	}
 	
 	stockBuying(inputval) {
-		// this is a little harsh but I'm relying on players to track these things for themselves (or lose their turn).
-		// For example, if you try to buy 3 $700 stocks with $2000, you can buy 3 cheaper stocks or lose your stock buying turn.
-		// Right now, you don't get the chance to go back and ask for 2.  Track your money, people!
+    	let stockprices = this.calcStocks()	
 		if (inputval.toUpperCase() === 'X') {
 			this.playerPhase = this.noStockPhase
 			return this.textBack.concat(this.board(), '\n\nStock Transaction Aborted.  End of turn.')
@@ -843,14 +846,16 @@ class AcquireGame {
 		const stockBack = this.handleStockChain(inputval)
 		// don't advance if we're not right
 		if (!stockBack.includes('uccessf')) {
-			return this.textBack.concat(this.board(), stockBack, '\n\nWhich firm to purchase (first letter is ok) (X to abort) ?')
+		    this.stockLeft = this.stockLeft + this.stockBuy
+			// return this.textBack.concat(this.board(), stockBack, `\n\n${stockprices}\n\nWhich firm to purchase (first letter is ok) (X to abort) ?`)			
 		}
+		stockprices = this.calcStocks()	
 		if (this.stockLeft == 0) {
 			this.playerPhase = this.noStockPhase
 			return this.textBack.concat(this.board(), stockBack)
 		} else {
 			this.playerPhase = this.stockRequestPhase
-			return this.textBack.concat(this.board(), stockBack, '\n\nHolding Money $', String(this.playerFunds[this.playerTurn]), '\n\n', 
+			return this.textBack.concat(this.board(), stockBack, '\n\nHolding Money $', String(this.playerFunds[this.playerTurn]), `\n\n${stockprices}\n\n`, 
 				this.playerStockHoldings(true), '\n\nBuy how many shares of a single stock type? (0-', String(this.stockLeft), ')\n\n')
 		}		
 	}
@@ -1018,7 +1023,7 @@ class AcquireGame {
             this.canEndGame = true
             gameEndMessage = gameEndMessage.concat('\n\nAll chains are safe.  You may end the game if you like by typing "end".')
         }
-        return this.textBack.concat(this.board()).concat('Player ',String(this.playerTurn),", you are holding\n\n", this.playerStockHoldings(false), removedMessage,
+        return this.textBack.concat(this.board()).concat('Player ',String(this.playerTurn),`, you are holding\n\nMoney $${String(this.playerFunds[this.playerTurn])}\n\n${this.playerStockHoldings(false)}${removedMessage}`,
                                      "Choose a tile to play:\n\n",this.showPlayerTiles(), gameEndMessage)
     }
 
