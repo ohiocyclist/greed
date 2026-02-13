@@ -315,12 +315,12 @@ class AcquireGame {
         return stockBlurb
     }
 
-    playerStockHoldings(hideval) {
+    playerStockHoldings(hideval, playerStock=this.playerTurn) {
 		// display which firms a player is holding
 		// if hideval is false (i.e. they're looking at their own hand rather than a global display) also display the counts
         let stockBlurb = ''
         for (let i = 0; i < this.chains.length; i++) {
-            const stockamt = this.playerStocks[this.playerTurn][this.chains[i]]
+            const stockamt = this.playerStocks[playerStock][this.chains[i]]
             if (stockamt > 0) {
                 if (hideval) {
                     stockBlurb = stockBlurb.concat('Some ', this.chains[i], '\n')
@@ -564,8 +564,9 @@ class AcquireGame {
             this.playerBags[this.playerTurn].add(drawnTile)
         }
         if (this.playerFunds[this.playerTurn] < 200) {
+            const holdTurn = this.playerTurn
             this.nextTurn()
-            return `${this.textBack}${this.board()}\n\nPlayer ${this.playerTurn} has too little money to buy stocks hit enter\n`
+            return `${this.textBack}${this.board()}\n\nPlayer ${holdTurn} has too little money to buy stocks hit enter\n`
         }
         // would like a nice sum function.....
         if (this.chainsOnBoard.reduce((acc, cur) => {return acc + cur}, 0) === 0) {
