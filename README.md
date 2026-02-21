@@ -33,3 +33,6 @@ How to play
     
     The game ends when a player accepts the end (any player) after the tile bag runs
     out, all the chains are safe, or one chain is over 40 tiles large.
+
+Note:
+Parts coded via AI
