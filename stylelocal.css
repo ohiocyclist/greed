@@ -1,0 +1,147 @@
+:root {
+  color-scheme: dark;
+  font-family: "Cascadia Mono", "Consolas", "Courier New", monospace;
+  background: #0b0f1a;
+  color: #e5e7eb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 24px;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: minmax(320px, 2fr) minmax(260px, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.panel {
+  background: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+h1, h2 {
+  margin: 0 0 12px 0;
+}
+
+.subtle {
+  margin: 0 0 16px 0;
+  color: #9ca3af;
+}
+
+.output {
+  min-height: 320px;
+  max-height: 80vh;
+  min-width: 640px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  background: #0b1220;
+  border: 1px solid #1f2937;
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.input-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #374151;
+  background: #0b1220;
+  color: #f9fafb;
+}
+
+button {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  background: #2563eb;
+  color: #f9fafb;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+.help ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+    .board {
+      display: grid;
+      grid-template-columns: repeat(12, 40px);
+      grid-template-rows: repeat(9, 40px);
+      border: 4px solid #000;
+    }
+
+    .square {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: serif;
+      font-size: 13px;
+      font-weight: bold;
+      border: 2px solid #483c2c;
+    }
+
+    .black {
+      background: #483c2c;
+      color: #bcc20b;
+    }
+
+    .white {
+      background: #bcc20b;
+      color: #483c2c;
+    }
+
+    .imperial {
+      background: #da25c2;
+      color: #bcc20b;
+    }
+
+    .continental {
+      background: #25cbda;
+      color: #483c2c;
+    }
+
+    .american {
+      background: #2825da;
+      color: #bcc20b;
+    }
+
+    .festival {
+      background: #25da50;
+      color: #483c2c;
+    }
+
+    .worldwide {
+      background: #da9225;
+      color: #483c2c;
+    }
+
+    .luxor {
+      background: #ef2f40;
+      color: #bcc20b;
+    }
+
+    .tower {
+      background: #efea2f;
+      color: #483c2c;
+    }
