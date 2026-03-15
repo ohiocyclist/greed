@@ -44,7 +44,8 @@ There is also a client-server version that can have multiple clients, one per pl
 (no more having to ask not to peek!) You need a computer that can act as a host.  The
 host needs node.js to run the websocket listener node realtime-server.js and a webserver
 (drop all the files in one folder and you can run python -m http.server as an easy way
-to do this).  The clients navigate to the web served port and the code looks for the
+to do this).  The clients navigate to the web served port (e.g. 
+http://192.168.1.17:8000/acquiremulti.html ) and the code looks for the
 websocket server on the same computer.  (Fancier setups with https and/or passwords
 I leave to you to devise.)  I play in my local network with my router acting as a
 firewall to prevent exposing Acquire to the rest of the internet.  Still I always make
